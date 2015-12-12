@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, Response
+from recom.py import *
 app = Flask(__name__, static_folder='static', static_url_path='')
 
 @app.route('/')
@@ -7,7 +8,10 @@ def return_index():
     
 @app.route('/opinion', methods=['POST'])
 def opinion_process():
-    return '{ "test": "testing" }'
+    opinion = request.form['opinion']
+    movie_id = request.form['movie_id']
+    storeJSON(movie_id, opinion)
+    return giveJSON()
 
 @app.route('/')
 def base():

@@ -31,12 +31,12 @@ $(document).ready(function () {
 		$('.overlay').hide();
 	});
 
-	function ajaxReq(button, movie_id){
+	function ajaxReq(butto, movie_id){
 		$.ajax({
 			url: "/opinion",
 
 			data:{
-				opinion: button,
+				opinion: butto,
 				movie_id: movie_id
 			},
 
