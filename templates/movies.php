@@ -9,7 +9,7 @@
 		$(document).ready(function () {
 			$('.likebtn').click(function() {
 				console.log("btn clicked!");
-				$.post('/', {
+				$.post(window.location.href, {
 					"opinion": "like",
 					"movie_id": "123"
 				}, function (raw_data) {

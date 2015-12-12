@@ -39,8 +39,11 @@ header {
 	background-color: blue;
 	margin-top: 1em;
 	border-radius: 10em;
+	cursor: pointer;
 }
 
-.test2 .testbtn {
+.test2 .testbtn.likebtn {
+	background-color: #00da08;
+	background-image: url('/like.png');
 }
 
