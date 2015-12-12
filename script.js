@@ -1,40 +1,50 @@
 $(document).ready(function () {
+	
+	var movie_id = 0;
+
 	$('.likebtn').click(function(e) {
 		if (!$('.likebtn').hasClass('disabled')) {
 			$('.testbtn').addClass('disabled');
-			$.post(window.location.href, {
-				"opinion": "like",
-				"movie_id": "123"
-			}, function (raw_data) {
-				var data = $.parseJSON(raw_data);
-				console.log(data);
-			});
+			ajaxReq('like', movie_id);
 		}
 	});	
 
 	$('.dislikebtn').click(function() {
 		if (!$('.likebtn').hasClass('disabled')) {
 			$('.testbtn').addClass('disabled');
-			$.post(window.location.href, {
-				"opinion": "dislike",
-				"movie_id": "123"
-			}, function (raw_data) {
-				var data = $.parseJSON(raw_data);
-				console.log(data);
-			});
+			ajaxReq('dislike', movie_id);
 		}
 	});
 
 	$('.notseenbtn').click(function() {
 		if (!$('.likebtn').hasClass('disabled')) {
 			$('.testbtn').addClass('disabled');
-			$.post(window.location.href, {
-				"opinion": "notseen",
-				"movie_id": "123"
-			}, function (raw_data) {
-				var data = $.parseJSON(raw_data);
-				console.log(data);
-			});
+			ajaxReq('unseen', movie_id);
 		}
 	});
+
 });
+
+
+function ajaxReq(button, movie_id){
+	$.ajax({
+		url: "/opinion",
+
+		data:{
+			opinion: button,
+			movie_id: movie_id
+		},
+
+		type: "POST",
+
+		dataType: "json",
+
+		success: function( response ){
+			//change webpage
+		},
+
+		complete: function(){
+
+		}
+	});
+}
