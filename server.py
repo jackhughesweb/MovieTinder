@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, Response
-from recom.py import *
+from recom import *
 app = Flask(__name__, static_folder='static', static_url_path='')
 
 @app.route('/')
@@ -11,7 +11,7 @@ def opinion_process():
     opinion = request.form['opinion']
     movie_id = request.form['movie_id']
     storeJSON(movie_id, opinion)
-    return giveJSON()
+    return giveJSON(5)
 
 @app.route('/')
 def base():

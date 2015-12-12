@@ -2,7 +2,6 @@ import json
 
 userData = 'userData.txt'
 movie = 'OMDb2.txt'
-    
 	
 def storeJSON(movie_id, opinion):
     f = open('userData.txt', 'w')
