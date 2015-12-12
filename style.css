@@ -26,10 +26,14 @@ header {
 
 .test {
 	width: 200px;
-	height: 350px;
 	background-color: white;
 	border-radius: 0.5em;
 	box-shadow: 0 2px 4px 0;
+}
+
+.test img {
+	width: 200px;
+	border-radius: 0.5em;
 }
 
 .test2 .testbtn {
@@ -40,10 +44,35 @@ header {
 	margin-top: 1em;
 	border-radius: 10em;
 	cursor: pointer;
+	color: rgba(0, 0, 0, 0);
 }
 
 .test2 .testbtn.likebtn {
 	background-color: #00da08;
 	background-image: url('/like.png');
+	background-size: 60%;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.test2 .testbtn.dislikebtn {
+	background-color: #da001b;
+	background-image: url('/dislike.png');
+	background-size: 60%;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.test2 .testbtn.notseenbtn {
+	background-color: #da8d00;
+	background-image: url('/question.png');
+	background-size: 60%;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.test2 .testbtn.disabled {
+	opacity: 0.1;
+	cursor: default;
 }
 
