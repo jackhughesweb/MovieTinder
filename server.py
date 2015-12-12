@@ -14,8 +14,9 @@ def status_get():
 @app.route('/opinion', methods=['POST'])
 def opinion_process():
     opinion = request.form['opinion']
-    movie_id = request.form['movie_id']
-    storeJSON(movie_id, opinion)
+    name = request.form['name']
+    year = request.form['year']
+    storeJSON(name, year, opinion)
     return giveJSON(random.randint(1, 100))
 
 @app.route('/')

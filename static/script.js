@@ -1,25 +1,26 @@
 $(document).ready(function () {
 
-	var movie_id = "";
+	var name = "";
+	var year = 0;
 
 	$('.btn-like').click(function(e) {
 		if (!$('.btn-like').hasClass('disabled')) {
 			$('.btn-opinion').addClass('disabled');
-			ajaxReq('like', movie_id);
+			ajaxReq('like', name, year);
 		}
 	});	
 
 	$('.btn-dislike').click(function() {
 		if (!$('.btn-dislike').hasClass('disabled')) {
 			$('.btn-opinion').addClass('disabled');
-			ajaxReq('dislike', movie_id);
+			ajaxReq('dislike', name, year);
 		}
 	});
 
 	$('.btn-notseen').click(function() {
 		if (!$('.btn-notseen').hasClass('disabled')) {
 			$('.btn-opinion').addClass('disabled');
-			ajaxReq('unseen', movie_id);
+			ajaxReq('unseen', name, year);
 		}
 	});
 
@@ -31,13 +32,14 @@ $(document).ready(function () {
 		$('.overlay').hide();
 	});
 
-	function ajaxReq(butto, movie_id){
+	function ajaxReq(butto, name, year){
 		$.ajax({
 			url: "/opinion",
 
 			data:{
 				opinion: butto,
-				movie_id: movie_id
+				mName: name
+				mYear: year
 			},
 
 			type: "POST",
@@ -45,7 +47,8 @@ $(document).ready(function () {
 			dataType: "json",
 
 			success: function( response ){
-				movie_id = response['imdbID'];
+				name = response['Title'];
+				year = response['Year']
 				$('#movie-art-img').prop('src', response['Poster']);
 				$('.btn-opinion').removeClass('disabled');
 			},
@@ -57,7 +60,8 @@ $(document).ready(function () {
 	}
 
 	$.getJSON('/status', function (data) {
-		movie_id = data['imdbID'];
+		name = data['Title'];
+		year = data['Year']
 		$('#movie-art-img').prop('src', data['Poster']);
 		$('.btn-opinion').removeClass('disabled');
 	});
