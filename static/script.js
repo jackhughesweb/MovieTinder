@@ -26,20 +26,23 @@ $(document).ready(function () {
 
 	$('.btn-rec').click(function () {
 		$('.overlay').show();
+		$.getJSON('/recommended', function(data){
+			addRecommendation(data);
+		}); 
 	});
 
 	$('.btn-overlay-close').click(function () {
 		$('.overlay').hide();
 	});
 
-	function ajaxReq(butto, name, year){
+	function ajaxReq(butto, reqname, reqyear){
 		$.ajax({
 			url: "/opinion",
 
 			data:{
 				opinion: butto,
-				mName: name
-				mYear: year
+				mName: reqname,
+				mYear: reqyear
 			},
 
 			type: "POST",
@@ -64,12 +67,12 @@ $(document).ready(function () {
 		year = data['Year']
 		$('#movie-art-img').prop('src', data['Poster']);
 		$('.btn-opinion').removeClass('disabled');
+		
 	});
 
-	function addRecommendation(movie) {
-		$('ul.rec-list').append('<li><table><tr><td><img src="http://ia.media-imdb.com/images/M/MV5BNjE5MzYwMzYxMF5BMl5BanBnXkFtZTcwOTk4MTk0OQ@@._V1_SX300.jpg" width="100%"></td><td><span>Gravity</span><br>0.912</td></tr></table></li>');
-	}
 
-	addRecommendation({});
-	addRecommendation({});
+
+	function addRecommendation(movie) {
+		$('ul.rec-list').append('<li><table><tr><td><img src="' + movie['Poster'] +'" width="100%"></td><td><span>'+movie['Title']+'</span><br>0.912</td></tr></table></li>');
+	}
 });

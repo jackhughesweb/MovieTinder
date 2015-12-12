@@ -14,10 +14,14 @@ def status_get():
 @app.route('/opinion', methods=['POST'])
 def opinion_process():
     opinion = request.form['opinion']
-    name = request.form['name']
-    year = request.form['year']
+    name = request.form['mName']
+    year = request.form['mYear']
     storeJSON(name, year, opinion)
     return giveJSON(random.randint(1, 100))
+
+@app.route('/recommended', methods=['GET'])
+def recommended_movie():
+	return getMovie()
 
 @app.route('/')
 def base():
