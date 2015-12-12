@@ -73,6 +73,6 @@ $(document).ready(function () {
 
 
 	function addRecommendation(movie) {
-		$('ul.rec-list').append('<li><table><tr><td><img src="' + movie['Poster'] +'" width="100%"></td><td><span>'+movie['Title']+'</span><br>0.912</td></tr></table></li>');
+		$('ul.rec-list').append('<li><table><tr><td><a href="http://www.imdb.com/title/'+movie['imdbID']+'/"><img src="' + movie['Poster'] +'" width="100%"></td><td><span>'+movie['Title']+'</span><br>'+movie['imdbRating']+'</td></tr></table></li>');
 	}
 });

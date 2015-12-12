@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	font-family: sans-serif;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 html, body { 
@@ -13,6 +13,10 @@ header {
 	padding: 2em;
 	position: absolute;
 	z-index: 1000;
+	width: 100%;
+	text-align: center;
+	font-size: 40px;
+	color: ;
 }
 
 .flex {
@@ -118,6 +122,15 @@ ul.rec-list li table tr td:nth-child(1) {
 	width: 20%;
 	vertical-align: top;
 }
+
+ul.rec-list li{
+	border: 1px solid ;
+}
+
+ul.rec-list li {
+	list-style: none;
+}
+
 
 ul.rec-list li table tr td:nth-child(2) span {
 	font-size: 1.2em;

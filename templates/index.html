@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="style.css">
 	<script src="jquery-1.11.3.min.js"></script>
 	<script src="script.js"></script>
 	<title>Movies</title>
+
 </head>
 <body>
-	<header>MovieTinder</header>
+	<header><b>MovieTinder</b></header>
 	<section class="flex">
 		<div class="movie-art"><img src="" id="movie-art-img"></div>
 		<div class="btn-opinions-group">
-			<div class="btn-opinion btn-like disabled">Like</div>
-			<div class="btn-opinion btn-notseen disabled">Not seen</div>
-			<div class="btn-opinion btn-dislike disabled">Dislike</div>
+			<div class="btn-opinion btn-like disabled"></div>
+			<div class="btn-opinion btn-notseen disabled"></div>
+			<div class="btn-opinion btn-dislike disabled"></div>
 		</div>
 		<div class="btn-rec disabled">Recommendations</div>
 	</section>
@@ -22,7 +24,7 @@
 	</section>
 	<section class="overlay overlay-panel" style="display: none; position: absolute; width: 100%; height: 100%; z-index: 10001; top: 0; left: 0;">
 		<section class="flex">
-			<div style="width: 50%; height: 50%; background-color: white; overflow: scroll; scroll:">
+			<div style="width: 50%; height: 50%; background-color: white; overflow-y: scroll;">
 			Recommendations
 			<div class="btn-overlay-close">Close</div>
 			<br>
