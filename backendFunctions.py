@@ -74,19 +74,30 @@ def makeFeatureset(filmset,critset):
                 dic = {}
     
     return featureset
+ 
+def parseUserData(filepath):
+    f = open(filepath, 'r')
+    data = f.readlines()
     
-# NOT TESTED
+    userReviews = {}
+    for line in data:
+        line = line.split('|')
+        userReviews[line[0].replace(' ','')] = line[1].replace('\n','')
+        
+    return userReviews
+        
+    
 def labeledsetFromFeatureset(userReviews, featureset):
     labeledset = []
     for film in featureset:
-        if film in userReviews:
-            if userReviews[film] == 'like':
+        if film['title'] in userReviews:
+            if userReviews[film['title']] == 'like':
                 labeledset.append( (film, 'fresh') )
-            elif userReviews[film] == 'dislike':
+            elif userReviews[film['title']] == 'dislike':
                 labeledset.append( (film, 'rotten') )
     return labeledset
 
-# NOT TESTED
+
 def suggestions(labeledset, featureset):
     from nltk import SklearnClassifier
     from sklearn.linear_model import LogisticRegression
@@ -98,11 +109,11 @@ def suggestions(labeledset, featureset):
     
     filmsSeen = []
     for film in labeledset:
-        filmsSeen.append( film[1] )
+        filmsSeen.append( film[0]['title'] )
     
     suggestions = []
     for film in featureset:
-        if film in filmsSeen: continue
+        if film['title'] in filmsSeen: continue
         suggestions.append( (film['title'], clf.prob_classify(film).prob('fresh') ))
         
     suggestions.sort(key=lambda x: x[1], reverse=True)
