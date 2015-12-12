@@ -10,21 +10,25 @@
 <body>
 	<header>MovieTinder</header>
 	<section class="flex">
-		<div class="movie-art"><img src="https://image.tmdb.org/t/p/w396/fYzpM9GmpBlIC893fNjoWCwE24H.jpg"></div>
+		<div class="movie-art"><img src="" id="movie-art-img"></div>
 		<div class="btn-opinions-group">
-			<div class="btn-opinion btn-like">Like</div>
-			<div class="btn-opinion btn-notseen">Not seen</div>
-			<div class="btn-opinion btn-dislike">Dislike</div>
+			<div class="btn-opinion btn-like disabled">Like</div>
+			<div class="btn-opinion btn-notseen disabled">Not seen</div>
+			<div class="btn-opinion btn-dislike disabled">Dislike</div>
 		</div>
-		<div class="btn-rec">Recommendations</div>
+		<div class="btn-rec disabled">Recommendations</div>
 	</section>
-	<section class="overlay" style="display: none; position: absolute; width: 100%; height: 100%; z-index: 10000; top: 0; left: 0; background-color: black; opacity: 0.5;">
+	<section class="overlay overlay-dark">
 	</section>
-	<section class="overlay" style="display: none; position: absolute; width: 100%; height: 100%; z-index: 10001; top: 0; left: 0;">
+	<section class="overlay overlay-panel" style="display: none; position: absolute; width: 100%; height: 100%; z-index: 10001; top: 0; left: 0;">
 		<section class="flex">
-			<div style="width: 50%; height: 50%; background-color: white;">
+			<div style="width: 50%; height: 50%; background-color: white; overflow: scroll; scroll:">
 			Recommendations
 			<div class="btn-overlay-close">Close</div>
+			<br>
+			<ul class="rec-list">
+				
+			</ul>
 			</div>
 		</section>
 	</section>

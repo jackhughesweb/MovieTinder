@@ -34,6 +34,7 @@ header {
 
 .movie-art img {
 	width: 200px;
+	height: 300px;
 	border-radius: 0.5em;
 }
 
@@ -111,4 +112,13 @@ header {
 	z-index: 10001; 
 	top: 0; 
 	left: 0;
+}
+
+ul.rec-list li table tr td:nth-child(1) {
+	width: 20%;
+	vertical-align: top;
+}
+
+ul.rec-list li table tr td:nth-child(2) span {
+	font-size: 1.2em;
 }

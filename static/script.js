@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	var movie_id = 0;
+	var movie_id = "";
 
 	$('.btn-like').click(function(e) {
 		if (!$('.btn-like').hasClass('disabled')) {
@@ -45,7 +45,9 @@ $(document).ready(function () {
 			dataType: "json",
 
 			success: function( response ){
-				//change webpage
+				movie_id = response['imdbID'];
+				$('#movie-art-img').prop('src', response['Poster']);
+				$('.btn-opinion').removeClass('disabled');
 			},
 
 			complete: function(){
@@ -53,4 +55,17 @@ $(document).ready(function () {
 			}
 		});
 	}
+
+	$.getJSON('/status', function (data) {
+		movie_id = data['imdbID'];
+		$('#movie-art-img').prop('src', data['Poster']);
+		$('.btn-opinion').removeClass('disabled');
+	});
+
+	function addRecommendation(movie) {
+		$('ul.rec-list').append('<li><table><tr><td><img src="http://ia.media-imdb.com/images/M/MV5BNjE5MzYwMzYxMF5BMl5BanBnXkFtZTcwOTk4MTk0OQ@@._V1_SX300.jpg" width="100%"></td><td><span>Gravity</span><br>0.912</td></tr></table></li>');
+	}
+
+	addRecommendation({});
+	addRecommendation({});
 });

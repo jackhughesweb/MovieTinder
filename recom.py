@@ -4,8 +4,8 @@ userData = 'userData.txt'
 movie = 'OMDb2.txt'
 	
 def storeJSON(movie_id, opinion):
-    f = open('userData.txt', 'w')
-    f.write(str(movie_id) + "|" + str(opinion))
+    f = open('userData.txt', 'a')
+    f.write(str(movie_id) + "|" + str(opinion) + "\n")
 	
 def getMovie():
     print("hello")
