@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+	var recnum = 1
 	var name = "";
 	var year = 0;
 
@@ -88,6 +88,8 @@ $(document).ready(function () {
 
 
 	function addRecommendation(movie) {
+		$('.count').text(recnum.toString());
+		recnum +=1;
 		$('ul.rec-list').append('<li><table><tr><td><a href="http://www.imdb.com/title/'+movie['imdbID']+'/"><img src="' + movie['Poster'] +'" width="100%"></td><td><span>'+movie['Title']+'</span><br>'+movie['imdbRating']+'</td></tr></table></li>');
 	}
 });
