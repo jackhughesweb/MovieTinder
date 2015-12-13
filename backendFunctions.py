@@ -74,7 +74,7 @@ def makeFeatureset(filmset,critset):
                 dic = {}
     
     return featureset
- 
+
 def parseUserData(filepath):
     f = open(filepath, 'r')
     data = f.readlines()
@@ -85,7 +85,7 @@ def parseUserData(filepath):
         userReviews[line[0].replace(' ','')] = line[1].replace('\n','')
         
     return userReviews
-        
+    
     
 def labeledsetFromFeatureset(userReviews, featureset):
     labeledset = []
