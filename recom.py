@@ -6,7 +6,7 @@ def storeJSON(name,year, opinion):
     f.write(str(name) + " (" + str(year) + ")|" + str(opinion) + "\n")
 	
 def getMovie():
-    dicti = back.suggestMovie()
+    dicti = [[25,0.76],[34,0.82],[78,0.83]]
     nl="["
     for mov in dicti:
         n= mov[0]
