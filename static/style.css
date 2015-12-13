@@ -26,6 +26,9 @@ header {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	-webkit-animation-duration: .5s;
+	-moz-animation-duration: .5s;
+	animation-duration: .5s;
 }
 
 .movie-art {

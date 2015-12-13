@@ -25,14 +25,15 @@ $(document).ready(function () {
 	});
 
 	$('.btn-rec').click(function () {
-		$('.overlay').show();
+		$('.overlay').fadeIn();
+		$('.overlay-panel .flex').addClass('animated slideInUp');
 		$.getJSON('/recommended', function(data){
 			addRecommendation(data);
 		}); 
 	});
 
 	$('.btn-overlay-close').click(function () {
-		$('.overlay').hide();
+		$('.overlay-panel .flex').addClass('animated slideOutUp');
 	});
 
 	$('.overlay-panel .flex div').click(function (e) {
@@ -40,7 +41,12 @@ $(document).ready(function () {
 	});
 
 	$('.overlay-panel .flex').click(function () {
-		$('.overlay').hide();
+		$('.overlay-panel .flex').addClass('animated slideOutUp');
+		$('.overlay').fadeOut(function () {
+			$('.overlay-panel .flex').removeClass('animated');
+			$('.overlay-panel .flex').removeClass('slideInUp');
+			$('.overlay-panel .flex').removeClass('slideOutUp');
+		});
 	});
 
 	function ajaxReq(butto, reqname, reqyear){
