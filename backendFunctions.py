@@ -3,8 +3,8 @@
 def makeCritset(number, shuffle = False):
     import sqlite3
     import random
-    conn = sqlite3.connect('/Users/student/Library/Mobile Documents/com~apple~CloudDocs/_Python/_ScreenProject/Prototype/topcrits.db')
-    #conn = sqlite3.connect('/Users/student/Library/Mobile Documents/com~apple~CloudDocs/_Python/_ScreenProject/Prototype/topcrits.db')
+    conn = sqlite3.connect('topcrits.db')
+    #conn = sqlite3.connect('topcrits.db')
     c = conn.cursor()
     conn.text_factory = str
     
@@ -19,8 +19,8 @@ def makeCritset(number, shuffle = False):
     
 def makeFilmset(number):
     import sqlite3
-    conn = sqlite3.connect('/Users/student/Library/Mobile Documents/com~apple~CloudDocs/_Python/_ScreenProject/Prototype/topcrits.db')
-    #conn = sqlite3.connect('/Users/student/Library/Mobile Documents/com~apple~CloudDocs/_Python/_ScreenProject/Prototype/topcrits.db')
+    conn = sqlite3.connect('topcrits.db')
+    #conn = sqlite3.connect('topcrits.db')
     c = conn.cursor()
     conn.text_factory = str
     
@@ -44,8 +44,8 @@ def makeConstrainedFilmset():
 
 def makeFeatureset(filmset,critset):
     import sqlite3
-    conn = sqlite3.connect('/Users/student/Library/Mobile Documents/com~apple~CloudDocs/_Python/_ScreenProject/Prototype/topcrits.db')
-    #conn = sqlite3.connect('/Users/student/Library/Mobile Documents/com~apple~CloudDocs/_Python/_ScreenProject/Prototype/topcrits.db')
+    conn = sqlite3.connect('topcrits.db')
+    #conn = sqlite3.connect('topcrits.db')
     c = conn.cursor()
     conn.text_factory = str
     #print 'making featureset ...'
@@ -154,8 +154,8 @@ def suggestMovie(numSuggest = 20):
 
 def makeLabeledset(testSubject,filmset,critset):
     import sqlite3
-    conn = sqlite3.connect('/Users/student/Library/Mobile Documents/com~apple~CloudDocs/_Python/_ScreenProject/Prototype/topcrits.db')
-    #conn = sqlite3.connect('/Users/student/Library/Mobile Documents/com~apple~CloudDocs/_Python/_ScreenProject/Prototype/topcrits.db')
+    conn = sqlite3.connect('topcrits.db')
+    #conn = sqlite3.connect('topcrits.db')
     c = conn.cursor()
     conn.text_factory = str
     #print 'making featureset ...'

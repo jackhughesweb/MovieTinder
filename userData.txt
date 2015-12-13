@@ -20,3 +20,6 @@ The Social Network (2010)|like
 The Aviator (2004)|dislike
 Thor (2011)|unseen
 Gone Girl (2014)|like
+Fury (2014)|like
+Milk (2008)|unseen
+Whiplash (2014)|dislike

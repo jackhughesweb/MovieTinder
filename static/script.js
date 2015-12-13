@@ -30,7 +30,9 @@ $(document).ready(function () {
 		$.getJSON('/recommended', function(data){
 			console.log("hello");
 			$('ul.rec-list').html('');
-			addRecommendation(data);
+			for(i=0; i< 3; i++){
+				addRecommendation(data, i);
+			}
 		}); 
 	});
 
@@ -88,9 +90,9 @@ $(document).ready(function () {
 
 
 
-	function addRecommendation(movie) {
+	function addRecommendation(movie, num) {
 		$('.count').text(recnum.toString());
 		recnum +=1;
-		$('ul.rec-list').append('<li><table><tr><td><a href="http://www.imdb.com/title/'+movie['imdbID']+'/"><img src="' + movie['Poster'] +'" width="100%"></td><td><span>'+movie['Title']+'</span><br>'+movie['imdbRating']+'</td></tr></table></li>');
+		$('ul.rec-list').append('<li><table><tr><td><a href="http://www.imdb.com/title/'+movie[num]['imdbID']+'/"><img src="' + movie[num]['Poster'] +'" width="100%"></td><td><span>'+movie[num]['Title']+'</span><br>'+movie[num]['Ratio']+'</td></tr></table></li>');
 	}
 });

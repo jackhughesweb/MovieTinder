@@ -1,22 +1,26 @@
 import json
-
+import backendFunctions as back
 	
 def storeJSON(name,year, opinion):
     f = open('userData.txt', 'a')
     f.write(str(name) + " (" + str(year) + ")|" + str(opinion) + "\n")
 	
 def getMovie():
-    dicti = [[23,0.8],[80,0.8],[70,0.8],[60,0.8],[50,0.8],[40,0.8],[30,0.8],]
+    dicti = back.suggestMovie()
+    nl="["
     for mov in dicti:
         n= mov[0]
         i = 1
         with open("OMDbtransferable.txt") as f:
             for line in f:
+                print(line[1])
                 if (n==i):
-                    #nl = line[:-1]
-                    return line
+                    nl += line[:-2] + ', "Ratio": "' + str(mov[1]) + '"}, '
+                    break
                 else:
-                    i+=1
+                   i+=1
+    
+    return nl[:-2] + ']'
 
 
 def giveJSON(line):
@@ -29,3 +33,19 @@ def giveJSON(line):
             else:
                 i+=1
 
+"""
+print("hello")
+    for mov in dicti:
+        n= mov[0]
+        print(n)
+        i = 1
+        with open("OMDbtransferable.txt") as f:
+            for line in f:
+                print(line[1])
+                if (n==i):
+                    nl += line.replace('}', ', "Ratio": "' + str(mov[1]) + '"}')
+                    break
+                else:
+                   i+=1
+
+"""
