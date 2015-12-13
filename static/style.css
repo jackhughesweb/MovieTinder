@@ -155,3 +155,9 @@ ul.rec-list li table tr td:nth-child(1) {
 ul.rec-list li table tr td:nth-child(2) span {
 	font-size: 1.2em;
 }
+
+.overlay h2 {
+	margin-top: 1em;
+	text-align: center;
+}
+
