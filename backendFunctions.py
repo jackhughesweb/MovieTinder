@@ -31,8 +31,17 @@ def makeFilmset(number):
     filmset = []
     for film in films: filmset.append(film[0])
     return filmset[:number]
+    
+def makeConstrainedFilmset():
+    import pickle
+    RT_to_imdb = pickle.load( open( "RT_to_imdb.p", "rb" ) )
+    
+    films = []
+    for key in RT_to_imdb:
+        films.append(key)
+    return films
 
-# NOT TESTED
+
 def makeFeatureset(filmset,critset):
     import sqlite3
     conn = sqlite3.connect('/Users/student/Library/Mobile Documents/com~apple~CloudDocs/_Python/_ScreenProject/Prototype/topcrits.db')
@@ -75,14 +84,17 @@ def makeFeatureset(filmset,critset):
     
     return featureset
 
-def parseUserData(filepath):
-    f = open(filepath, 'r')
+def parseUserData():
+    import pickle
+    f = open('userData.txt', 'r')
     data = f.readlines()
+    
+    imdb_to_RT = pickle.load( open( "imdb_to_RT.p", "rb" ) )
     
     userReviews = {}
     for line in data:
         line = line.split('|')
-        userReviews[line[0].replace(' ','')] = line[1].replace('\n','')
+        userReviews[imdb_to_RT[ line[0] ]] = line[1].replace('\n','')
         
     return userReviews
     
@@ -98,7 +110,7 @@ def labeledsetFromFeatureset(userReviews, featureset):
     return labeledset
 
 
-def suggestions(labeledset, featureset):
+def suggestions(labeledset, featureset, num = 20):
     from nltk import SklearnClassifier
     from sklearn.linear_model import LogisticRegression
     from sklearn.svm import SVC, LinearSVC
@@ -117,8 +129,27 @@ def suggestions(labeledset, featureset):
         suggestions.append( (film['title'], clf.prob_classify(film).prob('fresh') ))
         
     suggestions.sort(key=lambda x: x[1], reverse=True)
-    return suggestions[:20]
+    return suggestions[:num]
 
+def returnSuggestions(suggestions):
+    import pickle
+    returnList = []
+    RT_to_imdb = pickle.load( open( "RT_to_imdb.p", "rb" ) )
+    for line in suggestions:
+        returnList.append( [RT_to_imdb[line[0]], round(line[1],3)] )
+    return returnList
+        
+        
+def suggestMovie(numSuggest = 20):
+    critset = makeCritset(2000)
+    filmset = makeConstrainedFilmset()
+    featureset = makeFeatureset(critset, filmset)
+    
+    userReviews = parseUserData()
+    labeledset = labeledsetFromFeatureset(userReviews, featureset)
+    suggests = suggestions(labeledset, featureset, numSuggest)
+    suggests = returnSuggestions(suggests)
+    return suggests
 
 def makeLabeledset(testSubject,filmset,critset):
     import sqlite3
@@ -179,6 +210,7 @@ def makeLabeledset(testSubject,filmset,critset):
         if featureitem['title'] in filmsDisliked:
             labeledset.append( (featureitem, 'rotten') )
     return labeledset
+    
     
 def testClient(labeledset, fracLearn=0.8, LearnRate = 0.027, printing = True, SVM = False):
     import random
