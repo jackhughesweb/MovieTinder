@@ -28,6 +28,7 @@ $(document).ready(function () {
 		$('.overlay').fadeIn();
 		$('.overlay-panel .flex').addClass('animated slideInUp');
 		$.getJSON('/recommended', function(data){
+			$('ul.rec-list').html('');
 			addRecommendation(data);
 		}); 
 	});
