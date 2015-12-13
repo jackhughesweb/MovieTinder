@@ -240,13 +240,13 @@ def testClient(labeledset, fracLearn=0.8, LearnRate = 0.027, printing = True, SV
         if clf.classify(film[0]) == film[1]:
             correct += 1
     testAcc = correct/float(len(testset))
-    if printing: print 'Accuracy on test set: '+str(testAcc)
+    if printing: print('Accuracy on test set: ' + str(testAcc))
     correct = 0
     for i,film in enumerate(trainset):
         if clf.classify(film[0]) == film[1]:
             correct += 1
     trainAcc = correct/float(len(trainset))
-    if printing: print 'Accuracy on train set: '+str(trainAcc)
+    if printing: print( 'Accuracy on train set: '+str(trainAcc))
     if not printing: return testAcc
 
 def gridSearchC(start, end, labeledset, iters=10):
@@ -256,7 +256,7 @@ def gridSearchC(start, end, labeledset, iters=10):
     for rate in range(start,end):
         C = float(rate)/1000
         score = 0
-        print rate
+        print(rate)
         for i in range(iters):
             score += testClient(labeledset, LearnRate = C, printing = False)
         score = score /iters
@@ -271,7 +271,7 @@ def multitest(labeledset, iters, fracLearn=0.8, LearnRate = 0.027, printing=Fals
     score = 0
     for i in range(iters):
         score += testClient(labeledset, fracLearn, LearnRate, False, SVM)
-    if printing: print float(score)/iters
+    if printing: print( float(score)/iters)
     else: return float(score)/iters
 
 def simpleRT(labeledset, printing = True):
@@ -288,7 +288,7 @@ def simpleRT(labeledset, printing = True):
         else: p = 'rotten'
         if film[1] == p:
             correct += 1
-    if printing: print 'Simple RT: '+str(correct/float(len(labeledset)))
+    if printing: print ('Simple RT: '+str(correct/float(len(labeledset))))
     else: return correct/float(len(labeledset))
 
 def nearCrits(crit, critset, filmset, fracTrain = 0.7, learnRate = 0.024):
@@ -312,4 +312,4 @@ def nearCrits(crit, critset, filmset, fracTrain = 0.7, learnRate = 0.024):
         critdist.append( (crit,dist) )
     critdist.sort(key=lambda x: x[1], reverse=True)
     for i in range(-10,10):
-        print critdist[i]
+        print (critdist[i])
