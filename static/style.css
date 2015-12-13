@@ -150,6 +150,13 @@ ul.rec-list li table tr td:nth-child(1) {
 	border-radius: 5%;
 	vertical-align: top;
 }
+ul.rec-list{
+	margin: 10px 0 0 10px;
+}
+
+ul.rec-list li table tr td a img{
+	border-radius: 5px;
+}
 
 
 ul.rec-list li table tr td:nth-child(2) span {
