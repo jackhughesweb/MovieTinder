@@ -2,7 +2,7 @@ $(document).ready(function () {
 	var recnum = 1
 	var name = "";
 	var year = 0;
-
+	var picks=0;
 	$('.btn-like').click(function(e) {
 		if (!$('.btn-like').hasClass('disabled')) {
 			$('.btn-opinion').addClass('disabled');
@@ -27,13 +27,7 @@ $(document).ready(function () {
 	$('.btn-rec').click(function () {
 		$('.overlay').fadeIn();
 		$('.overlay-panel .flex').addClass('animated slideInUp');
-		$.getJSON('/recommended', function(data){
-			console.log("hello");
-			$('ul.rec-list').html('');
-			for(i=0; i< 3; i++){
-				addRecommendation(data, i);
-			}
-		}); 
+		
 	});
 
 	$('.btn-overlay-close').click(function () {
@@ -51,6 +45,19 @@ $(document).ready(function () {
 			$('.overlay-panel .flex').removeClass('slideInUp');
 			$('.overlay-panel .flex').removeClass('slideOutUp');
 		});
+	});
+
+	$('btn-opinion').click(function(){
+		picks++;
+		if(picks>9){
+				$.getJSON('/recommended', function(data){
+				console.log("hello");
+				$('ul.rec-list').html('');
+				for(i=0; i< 3; i++){
+					addRecommendation(data, i);
+				}
+			}); 
+		}
 	});
 
 	function ajaxReq(butto, reqname, reqyear){
