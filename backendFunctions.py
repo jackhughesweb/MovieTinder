@@ -94,7 +94,7 @@ def parseUserData():
     userReviews = {}
     for line in data:
         line = line.split('|')
-        userReviews[imdb_to_RT[ line[0] ]] = line[1].replace('\n','')
+        userReviews[imdb_to_RT[ line[0] ][0]] = line[1].replace('\n','')
         
     return userReviews
     
