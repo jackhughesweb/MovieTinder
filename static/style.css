@@ -10,13 +10,11 @@ html, body {
 }
 
 header {
-	padding: 2em;
-	position: absolute;
 	z-index: 1000;
 	width: 100%;
 	text-align: center;
 	font-size: 40px;
-	color: ;
+	margin-bottom: .5em;
 }
 
 .flex {
