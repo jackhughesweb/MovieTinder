@@ -18,6 +18,7 @@ $(document).ready(function () {
 	});
 
 	$('.btn-notseen').click(function() {
+		console.log("hi");
 		if (!$('.btn-notseen').hasClass('disabled')) {
 			$('.btn-opinion').addClass('disabled');
 			ajaxReq('unseen', name, year);
@@ -47,8 +48,9 @@ $(document).ready(function () {
 		});
 	});
 
-	$('btn-opinion').click(function(){
+	$('.btn-opinion').click(function(){
 		picks++;
+		console.log("yo");
 		if(picks>9){
 				$.getJSON('/recommended', function(data){
 				console.log("hello");
