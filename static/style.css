@@ -115,7 +115,6 @@ header {
 
 .btn-overlay-close {
 	cursor: pointer;
-	text-decoration: underline;
 }
 
 .overlay-dark {
@@ -138,16 +137,17 @@ header {
 	z-index: 10001; 
 	top: 0; 
 	left: 0;
+	cursor: pointer;
+}
+
+.overlay-panel .flex div {
+	cursor: default;
 }
 
 ul.rec-list li table tr td:nth-child(1) {
 	width: 30%;
 	border-radius: 5%;
 	vertical-align: top;
-}
-.btn-overlay-close{
-	float:left;
-	background-color: red;
 }
 
 
