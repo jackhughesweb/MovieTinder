@@ -51,6 +51,9 @@ header {
 	border-radius: 10em;
 	cursor: pointer;
 	color: rgba(0, 0, 0, 0);
+	transition: opacity .25s ease-in-out, background-color .1s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out, background-color .1s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out, background-color .1s ease-in-out;
 }
 
 .btn-opinions-group .btn-opinion.btn-like {
@@ -77,6 +80,18 @@ header {
 	background-repeat: no-repeat;
 }
 
+.btn-opinions-group .btn-opinion.btn-like:hover {
+	background-color: #118701;
+}
+
+.btn-opinions-group .btn-opinion.btn-dislike:hover {
+	background-color: #80000f;
+}
+
+.btn-opinions-group .btn-opinion.btn-notseen:hover {
+	background-color: #814e02;
+}
+
 .btn-opinions-group .btn-opinion.disabled, .btn-rec.disabled {
 	opacity: 0.1;
 	cursor: default;
@@ -89,6 +104,13 @@ header {
 	border-radius: 1em;
 	color: white;
 	cursor: pointer;
+}
+
+.btn-rec:hover {
+	background-color: #0b5d84;
+	transition: background-color .1s ease-in-out;
+    -moz-transition: background-color .1s ease-in-out;
+    -webkit-transition: background-color .1s ease-in-out;
 }
 
 .btn-overlay-close {
