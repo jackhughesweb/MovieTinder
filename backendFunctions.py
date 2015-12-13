@@ -136,7 +136,7 @@ def returnSuggestions(suggestions):
     returnList = []
     RT_to_imdb = pickle.load( open( "RT_to_imdb.p", "rb" ) )
     for line in suggestions:
-        returnList.append( [RT_to_imdb[line[0]], round(line[1],3)] )
+        returnList.append( [RT_to_imdb[line[0]][1], round(line[1],3)] )
     return returnList
         
         
@@ -146,6 +146,7 @@ def suggestMovie(numSuggest = 20):
     featureset = makeFeatureset(critset, filmset)
     
     userReviews = parseUserData()
+    featureset = makeFeatureset(filmset,critset)
     labeledset = labeledsetFromFeatureset(userReviews, featureset)
     suggests = suggestions(labeledset, featureset, numSuggest)
     suggests = returnSuggestions(suggests)
