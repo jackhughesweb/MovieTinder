@@ -119,16 +119,13 @@ header {
 }
 
 ul.rec-list li table tr td:nth-child(1) {
-	width: 20%;
+	width: 30%;
+	border-radius: 5%;
 	vertical-align: top;
 }
-
-ul.rec-list li{
-	border: 1px solid ;
-}
-
-ul.rec-list li {
-	list-style: none;
+.btn-overlay-close{
+	float:left;
+	background-color: red;
 }
 
 
