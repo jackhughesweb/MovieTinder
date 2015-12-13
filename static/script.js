@@ -35,6 +35,14 @@ $(document).ready(function () {
 		$('.overlay').hide();
 	});
 
+	$('.overlay-panel .flex div').click(function (e) {
+		e.stopPropagation();
+	});
+
+	$('.overlay-panel .flex').click(function () {
+		$('.overlay').hide();
+	});
+
 	function ajaxReq(butto, reqname, reqyear){
 		$.ajax({
 			url: "/opinion",
