@@ -55,7 +55,7 @@ def makeFeatureset(filmset,critset):
     filmbatch = []
     batch = []
     for i,film in enumerate(filmset):
-        if i % batchsize != batchsize-1:
+        if i % batchsize != batchsize-1 and i != len(filmset)-1:
             batch.append(film)
         else:
             filmbatch.append(batch)
@@ -141,15 +141,19 @@ def returnSuggestions(suggestions):
         
         
 def suggestMovie(numSuggest = 20):
-    critset = makeCritset(2000)
-    filmset = makeConstrainedFilmset()
-    featureset = makeFeatureset(critset, filmset)
-    
+    import cPickle as pickle
+    import time
+    #start = time.time()
+    featureset = pickle.load( open( "featureset.p", "rb" ) )
+    #print time.time() - start
     userReviews = parseUserData()
-    featureset = makeFeatureset(filmset,critset)
+    #print time.time() - start
     labeledset = labeledsetFromFeatureset(userReviews, featureset)
+    #print time.time() - start
     suggests = suggestions(labeledset, featureset, numSuggest)
+    #print time.time() - start
     suggests = returnSuggestions(suggests)
+    #print time.time() - start
     return suggests
 
 def makeLabeledset(testSubject,filmset,critset):
